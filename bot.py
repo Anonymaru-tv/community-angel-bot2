@@ -1,6 +1,7 @@
 # ==========================================
 # DISCORD COMMUNITY & RPG ANGEL-BOT (bot.py)
 # ==========================================
+import os
 import random
 import time
 import aiosqlite
@@ -16,7 +17,7 @@ from config import (
     BAIT_TIERS
 )
 
-DB_NAME = "community_fishing.db"
+DB_NAME = os.environ.get("DB_PATH", "community_fishing.db")
 
 intents = discord.Intents.default()
 intents.members = True
@@ -1396,4 +1397,4 @@ async def enchant(interaction: discord.Interaction):
 # 10. BOT STARTEN
 # ==========================================
 # Setze hier deinen echten Bot-Token aus dem Discord Developer Portal ein:
-bot.run("TOKEN")
+bot.run(os.environ["DISCORD_TOKEN"])
